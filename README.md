@@ -80,7 +80,7 @@ http://localhost:3000/callback
 # 1) 프로젝트 폴더로 이동
 cd linkedin-poster
 
-# 2) Node 버전 확인 (v24.22.1 이상이어야 해요)
+# 2) Node 버전 확인
 node -v
 
 # 3) 필요한 부품(패키지) 설치
