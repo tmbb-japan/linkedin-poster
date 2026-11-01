@@ -140,7 +140,6 @@ npm run post -- "글을 공유합니다" --url https://example.com
 npm run post -- "글을 공유합니다" --url https://example.com --image 썸네일.png
 ```
 
-- 줄바꿈이 필요하면 따옴표 안에서 엔터를 치거나 `$'첫줄\n둘째줄'` 형태(맥/리눅스)로 입력하세요.
 
 ---
 
