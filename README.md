@@ -133,8 +133,8 @@ npm run post -- "안녕하세요! API로 올리는 첫 글입니다."
 # 이미지 첨부
 npm run post -- "사진과 함께 올리는 글" --image 사진.png
 
-# 링크 카드 첨부 (본문은 외부 주소에 있고, 글에는 설명 카드가 붙습니다)
-npm run post -- "글을 공유합니다" --url https://example.com --description "글 설명"
+# 링크 카드 첨부 (본문은 외부 주소에 있고, 글에는 링크 카드가 붙습니다)
+npm run post -- "글을 공유합니다" --url https://example.com
 
 # 링크 카드에 썸네일 이미지도 함께
 npm run post -- "글을 공유합니다" --url https://example.com --image 썸네일.png
