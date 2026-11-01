@@ -53,11 +53,10 @@ npm run post -- "올리고 싶은 글 내용"
 | **Share on LinkedIn** | 내 계정 이름으로 글 쓰기 | `w_member_social` |
 | **Sign In with LinkedIn using OpenID Connect** | "내가 누구인지" 확인 (로그인 인증 방식의 하나) | `openid`, `profile` |
 
-> 권한(scope)은 "이 프로그램에게 허락해 주는 일의 범위"라고 생각하면 됩니다.
 
 ### 2-3. 되돌아올 주소(Redirect URL) 등록
 1. **Auth** 탭 → **OAuth 2.0 settings** → **Redirect URLs** 옆 연필 아이콘 클릭
-2. 아래 주소를 **한 글자도 다르지 않게** 추가하고 저장
+2. 아래 주소를 추가하고 저장
 
 ```
 http://localhost:3000/callback
@@ -69,7 +68,7 @@ http://localhost:3000/callback
 ### 2-4. 열쇠 2개 복사해 두기
 **Auth** 탭 상단에서 아래 두 값을 확인합니다.
 
-- **Client ID**: 앱의 아이디 (공개되어도 큰 문제는 없음)
+- **Client ID**: 앱의 아이디
 - **Client Secret**: 앱의 비밀번호 (**절대 남에게 보여주거나 깃허브에 올리지 마세요**)
 
 ---
