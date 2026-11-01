@@ -133,14 +133,13 @@ npm run post -- "안녕하세요! API로 올리는 첫 글입니다."
 # 이미지 첨부
 npm run post -- "사진과 함께 올리는 글" --image 사진.png
 
-# 링크 카드 첨부 (본문은 외부 주소에 있고, 글에는 제목·설명 카드가 붙습니다)
-npm run post -- "글을 공유합니다" --url https://example.com --title "글 제목" --description "글 설명"
+# 링크 카드 첨부 (본문은 외부 주소에 있고, 글에는 설명 카드가 붙습니다)
+npm run post -- "글을 공유합니다" --url https://example.com --description "글 설명"
 
 # 링크 카드에 썸네일 이미지도 함께
-npm run post -- "글을 공유합니다" --url https://example.com --title "글 제목" --image 썸네일.png
+npm run post -- "글을 공유합니다" --url https://example.com --image 썸네일.png
 ```
 
-- 글은 **전체 공개**로 올라갑니다. 비공개/연결된 사람만 공개로 바꾸려면 `src/post.ts`의 `visibility` 값을 `"CONNECTIONS"`로 바꾸세요.
 - 줄바꿈이 필요하면 따옴표 안에서 엔터를 치거나 `$'첫줄\n둘째줄'` 형태(맥/리눅스)로 입력하세요.
 
 ---

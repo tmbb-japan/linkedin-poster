@@ -1,8 +1,8 @@
 // 사용법:
 //   텍스트만:      npm run post -- "올리고 싶은 글 내용"
 //   이미지 첨부:   npm run post -- "글 내용" --image 사진.png
-//   링크 카드:     npm run post -- "글 내용" --url https://주소 --title "제목" --description "설명"
-//   링크+썸네일:   npm run post -- "글 내용" --url https://주소 --title "제목" --image 썸네일.png
+//   링크 카드:     npm run post -- "글 내용" --url https://주소 --description "설명"
+//   링크+썸네일:   npm run post -- "글 내용" --url https://주소 --image 썸네일.png
 import fs from "node:fs";
 import { apiVersion, TOKEN_FILE, type SavedToken } from "./config.js";
 
@@ -30,7 +30,6 @@ interface PostOptions {
   text: string;
   images: string[];
   url?: string;
-  title?: string;
   description?: string;
 }
 
@@ -41,7 +40,6 @@ function parseArgs(argv: string[]): PostOptions {
     const arg = argv[i];
     if (arg === "--image") opts.images.push(argv[++i] ?? "");
     else if (arg === "--url") opts.url = argv[++i];
-    else if (arg === "--title") opts.title = argv[++i];
     else if (arg === "--description") opts.description = argv[++i];
     else words.push(arg);
   }
@@ -88,9 +86,8 @@ async function createPost(token: SavedToken, opts: PostOptions): Promise<string>
   // 첨부 종류에 따라 글의 "내용물" 부분이 달라져요. 한 번에 한 종류만 붙일 수 있어요.
   let content: Record<string, unknown> | undefined;
   if (opts.url) {
-    // 링크 카드: 본문은 외부 주소에 있고, 글에는 제목·설명·썸네일 카드만 붙어요.
+    // 링크 카드: 본문은 외부 주소에 있고, 글에는 설명·썸네일 카드만 붙어요.
     const article: Record<string, unknown> = { source: opts.url };
-    if (opts.title) article.title = opts.title;
     if (opts.description) article.description = opts.description;
     if (opts.images[0]) article.thumbnail = await uploadImage(token, opts.images[0]);
     content = { article };
@@ -137,7 +134,7 @@ async function createPost(token: SavedToken, opts: PostOptions): Promise<string>
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
   if (!opts.text && opts.images.length === 0 && !opts.url) {
-    console.log('사용법: npm run post -- "올리고 싶은 글 내용" [--image 사진.png] [--url https://주소 --title "제목"]');
+    console.log('사용법: npm run post -- "올리고 싶은 글 내용" [--image 사진.png] [--url https://주소 --description "설명"]');
     process.exit(1);
   }
 
